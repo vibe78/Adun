@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}student_reg - Adun Health Care{% endblock %}
+
+{% block content %}
+    <!-- Add the specific content for the about page here -->
+          <br><br><br><br>
+
+
+    <div class="container h-100 d-flex justify-content-center align-items-center">
+
+        <br><br>
+
+        <div class="card mybg">
+
+                 <div style="margin:auto;width: 785px;max-width: 100%;">
+                {% if messages %} {% for message in messages %}
+            <div class="alert alert-secondary alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+             <strong>{{ message }}</strong>
+            </div>
+
+
+             {% endfor %}
+             {% endif %}
+              </div>
+
+
+
+            <div class="card-body ">
+                <form method="post" action=".">
+                    {% csrf_token %}
+                    <h5 class="mb-4 text-center">Please fill in the form below:</h5>
+                            
+                    <!-- Personal Information -->
+                    <div class="personalinfo mb-4">
+                        <h3 class="h3">Personal Patient Information</h3>
+                                
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="firstName"><b>First Name</b></label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" name="first_name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName"><b>Last Name</b></label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" name="last_name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="username"><b>Password</b></label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="username"><b>Password</b></label>
+                                <input type="password" class="form-control" id="password" name="comfirm_password" placeholder="Comfirm password" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dateOfBirth"><b>Date of Birth</b></label>
+                                <input type="date" class="form-control" id="dateOfBirth" name="date_of_birth" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email"><b>Email</b></label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phoneNumber"><b>Phone Number</b></label>
+                                <input type="tel" class="form-control" id="phoneNumber" name="phone_number" placeholder="123-456-7890" required>
+                            </div>
+
+
+                        <div class="col-md-6">
+                                <label for="phoneNumber"><b>Matriculation Number</b></label>
+                                <input type="text" pattern="[A-Z0-9]+" class="form-control" id="matric" name="matric" placeholder="" required>
+                            </div>
+                        </div>
+                    </div>
+                            
+                    <!-- Other Information -->
+                    <div class="instinfo mb-4">
+                        <h3>Other Information</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="gender"><b>Gender</b></label>
+                                <select  type="text" class="form-control" id="gender" name="gender" required>
+                                    <option value="Gender">Gender</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Male">Male</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="maritalStatus"><b>Marital Status</b></label>
+                                <select  type="text" class="form-control" id="maritalStatus" name="maritalstat" required>
+                                    <option value="Select">Select</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Divorce">Divorced</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="faculty"><b>Faculty</b></label>
+                                <select  type="text" class="form-control" id="faculty" name="faculty" required>
+                                    <option value="Select">Faculty</option>
+                                    <option value="Faculty of Science">Faculty of Science</option>
+                                    <option value="Faculty of Arts and Management Science">Faculty of Arts and Management Science</option>
+                                    <option value="fol">Faculty of Law</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="department"><b>Department</b></label>
+                                <select  type="text" class="form-control" id="department" name="department" required>
+                                    <option value="Select">Select</option>
+                                    <option value="Department of Biology and Forensic Science">Department of Biology and Forensic Science</option>
+                                    <option value="Department of Computing Science">Department of Computing Science</option>
+                                    <option value="Department of Public Law and Private Law">Department of Public Law and Private Law</option>
+                                    <option value="Department of Accounting/Business Administration/Economics">Department of Accounting/Business Administration/Economics</option>
+                                    <option value="Department of English & Literary Studies/History & International Studies">Department of English & Literary Studies/History & International Studies</option>
+                                    <option value="Department of International Relations/Hospitality & Tourism Studies">Department of International Relations/Hospitality & Tourism Studies</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                            
+                    <!-- Medical History -->
+                    <div class="med mb-4">
+                        <h3>Medical History</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="admissionNumber"><b>Admission Number</b></label>
+                                <input type="text" class="form-control" id="admissionNumber" name="admission_number" placeholder="Enter your admission number" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="roomNumber"><b>Room Number</b></label>
+                                <input type="number" class="form-control" id="roomNumber" name="room_number" placeholder="Enter your room number" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="weight"><b>Weight (kg)</b></label>
+                                <input type="number" class="form-control" id="weight" name="weight" placeholder="Enter your weight" step="0.01" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="height"><b>Height (cm)</b></label>
+                                <input type="number" class="form-control" id="height" name="height" placeholder="Enter your height" step="0.01" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="allergies"><b>Allergies</b></label>
+                                <textarea  type="text" class="form-control" id="allergies" name="allergies" placeholder="List any allergies you have" required></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="medicalCondition"><b>Medical Condition</b></label>
+                                <textarea  type="text" class="form-control" id="medicalCondition" name="medical_condition" placeholder="Describe your medical condition" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="takingMedications"><b>Are you taking any medications?</b></label>
+                                <div>
+                                    <input type="radio" id="takingMedicationsYes" name="taking_medicationsyes" value="1" required>
+                                    <label for="takingMedicationsYes">Yes</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="takingMedicationsNo" name="taking_medicationsno" value="0" required>
+                                    <label for="takingMedicationsNo">No</label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <label for="medications"><b>Medications</b></label>
+                                <textarea  type="text" class="form-control" id="medications" name="medications" placeholder="List any medications you are taking"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="text-center mt-4">
+                        <button class="btn btn-success py-2 px-4" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+{% endblock %}

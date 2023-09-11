@@ -1,0 +1,92 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Signin - Adun</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/blogin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    <style>
+      /* Custom styles */
+      body {
+        background-color: lightblue; /* Set the light blue background color */
+      }
+      .card {
+        background-color: rgba(0, 255, 255, 0.1); /* Set the card background to transparent white */
+        border: none; /* Remove card border */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+      }
+    </style>
+  </head>
+
+  <body class="text-center">
+  <div style="margin:auto;width: 785px;max-width: 100%;">
+
+
+            <div style="margin:auto;width: 785px;max-width: 100%;">
+                {% if messages %} {% for message in messages %}
+            <div class="alert alert-secondary alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+             <strong>{{ message }}</strong>
+            </div>
+
+
+             {% endfor %}
+             {% endif %}
+              </div>
+    <form method="post" class="form-signin">
+        {% csrf_token %}
+      <img class="mb-4" src="{% static '/img/IMG-20230620-WA0013.png' %}" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Welcome To Adun Health Care</h1>
+
+      <label for="admission_number" class="sr-only">Id Number:</label>
+      <input type="text" id="admission_number" class="form-control" name="admission_number" placeholder="Enter your Admission Number" required><br>
+
+      <label for="password" class="sr-only">Password:</label>
+      <input type="password" id="password" class="form-control" name="password" placeholder="Enter your password" required>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+
+      <p class="mt-6 text-center">
+        Don't have any account?
+        <a
+          class="font-medium underline underline-offset-2 hover:no-underline"
+          href="{% url 'register' %}">
+          Sign Up
+        </a>
+      </p>
+      <p class="mt-2 text-center">
+        Forgot your password?
+        <a
+          class="font-medium underline underline-offset-2 hover:no-underline"
+          href="{% url 'password_reset' %}">
+          Reset Password
+        </a>
+      </p>
+      {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+            {% endfor %}
+        </ul>
+    {% endif %}
+      <p class="mt-5 mb-3 text-muted">&copy; {{ current_year }}</p>
+    </form>
+  </body>
+</html>
+

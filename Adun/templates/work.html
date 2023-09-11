@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}service - Adun Health Care{% endblock %}
+
+{% block content %}
+    <!-- Add the specific content for the about page here -->
+    
+{% endblock %}
+
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="text-center mt-4">
+        <button class="btn btn-success py-2 px-4" type="submit">Register</button>
+    </div>
+</form>,
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}

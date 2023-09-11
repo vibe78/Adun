@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <style>
+        #root {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/blogin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+</head>
+<body>
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-lightblue">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+            <a class="navbar-brand" href="{% url 'profile' %}">My Profile</a>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                
+            </div>
+        </div>
+      </nav>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
+<script>
+window.onload = function () {
+    function getUrlParams(url) {
+        let urlStr = url.split('?')[1];
+        const urlSearchParams = new URLSearchParams(urlStr);
+        const result = Object.fromEntries(urlSearchParams.entries());
+        return result;
+    }
+
+    // Retrieve the user's name from the Django template (replace 'userFullName' with the actual variable)
+    const userFullName = "{{ name }}"; 
+
+    // Generate a Token by calling a method.
+    // @param 1: appID
+    // @param 2: serverSecret
+    // @param 3: Room ID
+    // @param 4: User ID
+    // @param 5: Username (use the user's name here)
+    const roomID = getUrlParams(window.location.href)['roomID'] || (Math.floor(Math.random() * 10000) + "");
+    const userID = Math.floor(Math.random() * 10000) + "";
+    const userName = userFullName; // Use the user's full name
+    const appID = 1854591177;
+    const serverSecret = "0884144081773f56fe837baa1b8e5c76";
+    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userID, userName);
+
+    const zp = ZegoUIKitPrebuilt.create(kitToken);
+    zp.joinRoom({
+        container: document.querySelector("#root"),
+        sharedLinks: [{
+            name: 'Personal link',
+            url: window.location.protocol + '//' + window.location.host  + window.location.pathname + '?roomID=' + roomID,
+        }],
+        scenario: {
+            mode: ZegoUIKitPrebuilt.VideoConference,
+        },
+                
+        turnOnMicrophoneWhenJoining: false,
+        turnOnCameraWhenJoining: false,
+        showMyCameraToggleButton: true,
+        showMyMicrophoneToggleButton: true,
+        showAudioVideoSettingsButton: true,
+        showScreenSharingButton: true,
+        showTextChat: true,
+        showUserList: true,
+        maxUsers: 50,
+        layout: "Grid",
+        showLayoutButton: true,
+    });
+    // Handle joining the meeting based on the room ID
+    document.getElementById('joinButton').addEventListener('click', function () {
+        const roomIDInput = document.getElementById('roomID');
+        const roomID = roomIDInput.value;
+
+        // Check if the user is authenticated (logged in)
+        const userAuthenticated = {% if user.is_authenticated %}true{% else %}false{% endif %};
+
+        if (userAuthenticated) {
+            // Check if the room ID is not empty
+            if (roomID.trim() !== '') {
+                // Generate a random user ID and username for the user
+                const userID = Math.floor(Math.random() * 10000) + '';
+                const userName = 'User' + userID;
+
+                // Create a kit token for the user based on the room ID
+                const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userID, userName);
+
+                // Create a ZegoUIKitPrebuilt instance and join the room
+                const zp = ZegoUIKitPrebuilt.create(kitToken);
+                zp.joinRoom({
+                    container: document.querySelector('#root'),
+                    // ... Your other configuration options ...
+                });
+            } else {
+                alert('Please enter a valid Room ID.');
+            }
+        } else {
+            alert('Please log in to join the meeting.');
+    }   })
+}
+</script>
+</html> 

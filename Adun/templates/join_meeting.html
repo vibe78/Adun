@@ -1,0 +1,85 @@
+{% comment %} <!-- join_video_call.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Video Call</title>
+</head>
+<body>
+    <h1>Join Video Call</h1>
+    <p>Enter the Room ID or Invitation Link to join the video call:</p>
+    <form method="post" action="{% url 'join_video_call' room_id %}">
+        {% csrf_token %}
+        <input type="text" name="room_id" value="{{ room_id }}" readonly>
+        <button type="submit">Join Call</button>
+    </form>
+</body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Join Meeting - Adun</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/blogin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    <style>
+      /* Custom styles */
+      body {
+        background-color: lightblue; /* Set the light blue background color */
+      }
+      .card {
+        background-color: rgba(0, 255, 255, 0.1); /* Set the card background to transparent white */
+        border: none; /* Remove card border */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+      }
+    </style>
+</head>
+
+<body class="text-center">
+  <form method="get" action="{% url 'join_meeting' %}" class="form-signin">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="roomID" class="sr-only">Room ID:</label>
+        <input type="text" id="roomID" class="form-control" name="roomID" placeholder="Enter Room ID" required>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Join Meeting</button>
+</form>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const joinButton = document.getElementById('joinButton');  // Get the "Join Meeting" button
+      const roomIDInput = document.getElementById('roomID');     // Get the Room ID input field
+  
+      // Add an event listener to the button
+      joinButton.addEventListener('click', function(event) {
+          event.preventDefault();  // Prevent the default form submission
+  
+          // Get the value from the Room ID input field
+          const roomID = roomIDInput.value;
+  
+          // Check if the Room ID is not empty
+          if (roomID.trim() !== '') {
+              // Redirect to the join_video_call URL with the Room ID as a query parameter
+              window.location.href = `{% url 'join_meeting' %}?roomID=${roomID}`;
+          } else {
+              alert('Please enter a valid Room ID.');
+          }
+      });
+  });
+  </script>
+  
+</body>
+</html>
+

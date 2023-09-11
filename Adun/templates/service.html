@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}service - Adun Health Care{% endblock %}
+
+{% block content %}
+    <!-- Add the specific content for the about page here -->
+    <!-- Hero Start -->
+    <div class="container-fluid bg-primary py-5 hero-header mb-5">
+        <div class="row py-3">
+            <div class="col-12 text-center">
+                <h1 class="display-3 text-white animated zoomIn">Services</h1>
+                <a href="" class="h4 text-white">Home</a>
+                <i class="far fa-circle text-white px-2"></i>
+                <a href="" class="h4 text-white">Services</a>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+     <!-- Service Start -->
+     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5 mb-5">
+                <div class="col-lg-7">
+                    <div class="section-title mb-5">
+                        <h5 class="position-relative d-inline-block text-primary text-uppercase">Our Services</h5>
+                        <h1 class="display-5 mb-0">We Offer The Best Quality Health Care Services In ADUN</h1>
+                    </div>
+                    <div class="row g-5">
+                        <div class="row g-5">
+                            {% for service in services|slice:":2" %} 
+                            <div class="col-md-6 service-item wow zoomIn" data-wow-delay="{{ forloop.counter0|add:"0.6"|floatformat:"1" }}s">
+                                <div class="rounded-top overflow-hidden">
+                                    <img class="img-fluid" src="{{ service.image_url.url }}" alt="">
+                                </div>
+                                <div class="position-relative bg-light rounded-bottom text-center p-4">
+                                    <h5 class="m-0">
+                                        {% if forloop.counter == 3 %}
+                                            <a href="{% url 'service' %}">{{ service.title }}</a>
+                                        {% elif forloop.counter == 4 %}
+                                            <a href="{% url 'service' %}">{{ service.title }}</a>
+                                        {% else %}
+                                            <!-- Handle additional items here -->
+                                            <span>{{ service.title }}</span>
+                                        {% endif %}
+                                    </h5>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-7">
+                    <div class="row g-5">
+                        {% for service in services|slice:"3:" %}
+                        <div class="col-md-6 service-item wow zoomIn" data-wow-delay="{{ forloop.counter0|add:"0.6"|floatformat:"1" }}s">
+                            <div class="rounded-top overflow-hidden">
+                                <img class="img-fluid" src="{{ service.image_url.url }}" alt="">
+                            </div>
+                            <div class="position-relative bg-light rounded-bottom text-center p-4">
+                                <h5 class="m-0">
+                                    {% if forloop.counter == 1 %}
+                                        <a href="{% url 'service' %}">{{ service.title }}</a>
+                                    {% elif forloop.counter == 2 %}
+                                        <a href="{% url 'videocall' %}">{{ service.title }}</a>
+                                    {% else %}
+                                        <!-- Handle additional items here -->
+                                        <span>{{ service.title }}</span>
+                                    {% endif %}
+                                </h5>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+    
+
+   
+{% endblock %}

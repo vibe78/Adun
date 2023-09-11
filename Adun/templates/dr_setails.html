@@ -1,0 +1,342 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Patient profile - Adun Health Care{% endblock %}
+
+{% block content %}
+   {%include 'nav.html'%}
+
+     <!-- Add the specific content for the about page here -->
+    <section style="background-color: #eee;">
+
+
+ <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+        <br><br>
+
+    <h4>Patient Dashboard</h4>
+    <br><br>
+<p>{{sp.first_name}} {{sp.last_name}}</p>
+</div>
+
+
+
+      <div class="container py-5">
+        <div class="row">
+<div class="col-md5">
+    <table id="filterTable">
+  <tr class="header">
+    <th style="width:60%;">Item</th>
+    <th style="width:40%;">Info</th>
+  </tr>
+  <tr class="cars">
+    <td>First Name</td>
+    <td>{{sp.first_name}}</td>
+  </tr>
+  <tr class="colors fruits">
+    <td>Last Name</td>
+    <td>{{sp.last_name}}</td>
+  </tr>
+  <tr class="cars">
+    <td>Email</td>
+    <td>{{sp.email}}</td>
+  </tr>
+  <tr class="colors">
+    <td>qualification</td>
+    <td>{{sp.qualification}}</td>
+  </tr>
+
+</table>
+    <br><br>
+  <a><button style="background:#007bff;font-size:13px;" class="btn btn-lg btn-primary btn-block" type="submit">Book</button></a>
+
+</div>
+            </div>
+          <br><br>
+          </div>
+
+    </section>
+
+
+<style>
+#filterTable {
+  border-collapse: collapse; /* Collapse borders */
+  width: 600px; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+}
+
+#filterTable th, #filterTable td {
+  text-align: left; /* Left-align text */
+  padding: 12px; /* Add padding */
+}
+
+#filterTable tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+}
+
+#filterTable tr.header, #filterTable tr:hover {
+  /* Add a grey background color to the table header and on hover */
+  background-color: #f1f1f1;
+}
+
+.show {
+  display: block;
+}
+
+.container {
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+
+
+.title-pen {
+  color: #333;
+  font-family: "Coda", sans-serif;
+  text-align: center;
+}
+.title-pen span {
+  color: #55acee;
+}
+
+.user-profile {
+
+  background: #fff;
+  border-radius: .3em;
+}
+
+.user-profile  .username {
+  margin: auto;
+  margin-top: -4.40em;
+  margin-left: 5.80em;
+  color: #658585;
+  font-size: 1.53em;
+  font-family: "Coda", sans-serif;
+  font-weight: bold;
+}
+.user-profile  .bio {
+  margin: auto;
+  display: inline-block;
+  margin-left: 10.43em;
+  color: #e76043;
+  font-size: .87em;
+  font-family: "varela round", sans-serif;
+}
+.user-profile > .description {
+  margin: auto;
+  margin-top: 1.35em;
+  margin-right: 4.43em;
+  width: 14em;
+  color: #c0c5c5;
+  font-size: .87em;
+  font-family: "varela round", sans-serif;
+}
+.user-profile > img.avatar {
+	padding: .7em;
+  margin-left: .3em;
+  margin-top: .3em;
+  height: 6.23em;
+  width: 6.23em;
+  border-radius: 18em;
+}
+
+.user-profile ul.data {
+	margin: 2em auto;
+	height: 3.70em;
+  background: #4eb6b6;
+  text-align: center;
+  border-radius: 0 0 .3em .3em;
+}
+.user-profile li {
+	margin: 0 auto;
+  padding: 1.30em;
+  width: 33.33334%;
+  display: table-cell;
+  text-align: center;
+}
+
+.user-profile span {
+	font-family: "varela round", sans-serif;
+	color: #e3eeee;
+  white-space: nowrap;
+  font-size: 1.27em;
+  font-weight: bold;
+}
+.user-profile span:hover {
+  color: #daebea;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.order-card {
+    color: #fff;
+}
+
+.bg-c-blue {
+    background: linear-gradient(45deg,#4099ff,#73b4ff);
+}
+
+.bg-c-green {
+    background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+}
+
+.bg-c-yellow {
+    background: linear-gradient(45deg,#FFB64D,#ffcb80);
+}
+
+.bg-c-pink {
+    background: linear-gradient(45deg,#FF5370,#ff869a);
+}
+
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+    padding: 25px;
+}
+
+.order-card i {
+    font-size: 26px;
+}
+
+.f-left {
+    float: left;
+}
+
+.f-right {
+    float: right;
+}
+</style>
+
+
+    <script>
+      // Replace 'USER_ID' with the actual user identifier (e.g., user ID or username)
+      const userId = 'admission_number';
+  
+      // Retrieve the profile picture URL from local storage, if available for the user
+      const savedImageUrl = localStorage.getItem(`profileImageUrl_${userId}`);
+      if (savedImageUrl) {
+          document.getElementById('profile-image').src = savedImageUrl;
+      }
+  
+      document.getElementById('file-input').addEventListener('change', function () {
+          const file = this.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                  const profileImage = document.getElementById('profile-image');
+                  profileImage.src = e.target.result;
+  
+                  // Save the image URL in local storage with the user-specific key
+                  localStorage.setItem(`profileImageUrl_${userId}`, e.target.result);
+  
+                  // Upload the image to your server or cloud storage here
+                  // Replace 'uploadURL' with the actual URL where you handle image uploads
+                  const uploadURL = 'Service/%y/%m/%d/'; // Replace with your upload endpoint URL
+  
+                  const formData = new FormData();
+                  formData.append('profile_image', file); // Use the appropriate field name for the image
+  
+                  // Send the image to the server
+                  fetch(uploadURL, {
+                      method: 'POST',
+                      body: formData,
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                      // Assuming the server responds with the URL of the uploaded image
+                      const imageUrl = data.imageUrl; // Replace with the actual response key
+  
+                      // Update the user's profile with the imageUrl
+                      // You can use an AJAX request or any method suitable for your backend
+                      updateUserProfile(imageUrl); // Replace with your function to update the profile
+                  })
+                  .catch(error => {
+                      console.error('Error uploading image:', error);
+                  });
+              };
+              reader.readAsDataURL(file);
+          }
+      });
+  
+      function updateUserProfile(imageUrl) {
+          // Here, you should implement the logic to update the user's profile
+          // You would typically send a request to your backend to update the profile with the new image URL
+          // This depends on your backend technology (e.g., Node.js, Python, PHP, etc.)
+          // Example AJAX request:
+          /*
+          $.ajax({
+              url: '/update-profile',
+              type: 'POST',
+              data: { profileImageUrl: imageUrl },
+              success: function (response) {
+                  // Handle success
+                  console.log('Profile image updated successfully');
+              },
+              error: function (error) {
+                  // Handle error
+                  console.error('Error updating profile image:', error);
+              }
+          });
+          */
+      }
+  </script>
+  
+{% endblock %}

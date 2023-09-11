@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Staff_reg - Adun Health Care{% endblock %}
+
+{% block content %}
+    <!-- Add the specific content for the about page here -->
+          <br><br><br><br>
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <div class="container h-100 d-flex justify-content-center align-items-center">
+
+        <div class="card mybg">
+
+
+            <div style="margin:auto;width: 785px;max-width: 100%;">
+                {% if messages %} {% for message in messages %}
+            <div class="alert alert-secondary alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+             <strong>{{ message }}</strong>
+            </div>
+
+
+             {% endfor %}
+             {% endif %}
+              </div>
+            <div class="card-body ">
+                <form method="post" action=".">
+                    {% csrf_token %}
+                    <h5 class="mb-4 text-center">Please fill in the form below:</h5>
+                            
+                    <!-- Personal Information -->
+                    <div class="personalinfo mb-4">
+                        <h3 class="h3">Personal Information</h3>
+                                
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="firstName"><b>First Name</b></label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" name="first_name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName"><b>Last Name</b></label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" name="last_name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="username"><b>Password</b></label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="username"><b>Password</b></label>
+                                <input type="password" class="form-control" id="password" name="comfirm_password" placeholder="Comfirm password" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="email"><b>Email</b></label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com" required>
+                            </div>
+
+                            <div class="col-md-6">
+
+
+
+                                <label for="admissionNumber"><b>ID Number</b></label>
+                                <input type="text" pattern="[A-Z0-9]+" class="form-control" id="admissionNumber" name="admission_number" placeholder="Enter your ID number" required>
+                                <small style="color:green;font-size:11px;">ID Number Must Be Uppercase And Combination Of Numbers</small>
+
+                            </div>
+
+                        </div>
+                    </div>
+                            
+                    <!-- Other Information -->
+                    <div class="instinfo mb-4">
+                        <h3>Other Information</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="qualification"><b>Qualification</b></label>
+                                <select type="text" class="form-select" id="qualification" name="qualification" required>
+                                    <option value="">Choose your specialty</option>
+                                    <option value="Select">Select</option>
+                                    <option value="Doctor">Doctor</option>
+                                    <option value="Nurse">Nurse</option>
+                                    <option value="Pharmacist">Pharmacist</option>
+                                    <option value="Consultant">Consultant</option>
+                                    <option value="Laboratory">Laboratory Scientist</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                            
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-success py-2 px-4" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+{% endblock %}

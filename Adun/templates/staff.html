@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Staff profile - Adun Health Care{% endblock %}
+
+{% block content %}
+     <!-- Add the specific content for the about page here -->
+    <section style="background-color: #eee;">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card mb-4">
+              <div class="card-body text-center">
+                <img src="{{ profile_picture_url }}" alt="avatar" class="rounded-circle img-fluid" style="width: 190px;" id="profile-image">
+                <input type="file" accept="image/*" style="display: none;" id="file-input">
+                <button onclick="document.getElementById('file-input').click();" class="btn btn-primary" style="position: absolute; bottom: 80.5%; left: 50%; transform: translateX(100%);">Edit Pic</button>
+                <h5 class="my-3">{{ staffs.first_name }} {{ staffs.last_name }}</h5>
+            </div>
+        
+            </div>
+            <div class="card mb-4 mb-lg-0">
+              <div class="card-body p-0">
+                <ul class="list-group list-group-flush rounded-3">
+                  <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                    <p class="mb-0">weight</p>
+                    <p class="mb-0">{{ staffs.weight}} Kg</p>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                    <p class="mb-0">Height</p>
+                    <p class="mb-0">{{ staffs.height}} fit</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">First Name</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ staffs.first_name }}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Last Name</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ staffs.last_name}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Email</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ staffs.email}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Phone</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ staffs.phone_number}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Date of Birth</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ staffs.date_of_birth}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Gender</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ staffs.gender}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">marital Status</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ staffs.maritalstat}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">id_Number</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ staffs.admission_number}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Qualification</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ staffs.qualification}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Services Rendered</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ staffs.Services_Rendered}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Allergies</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{ staffs.allergies}}</p>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>"
+
+    <script>
+      // Replace 'USER_ID' with the actual user identifier (e.g., user ID or username)
+      const userId = 'admission_number';
+  
+      // Retrieve the profile picture URL from local storage, if available for the user
+      const savedImageUrl = localStorage.getItem(`profileImageUrl_${userId}`);
+      if (savedImageUrl) {
+          document.getElementById('profile-image').src = savedImageUrl;
+      }
+  
+      document.getElementById('file-input').addEventListener('change', function () {
+          const file = this.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                  const profileImage = document.getElementById('profile-image');
+                  profileImage.src = e.target.result;
+  
+                  // Save the image URL in local storage with the user-specific key
+                  localStorage.setItem(`profileImageUrl_${userId}`, e.target.result);
+  
+                  // Upload the image to your server or cloud storage here
+                  // Replace 'uploadURL' with the actual URL where you handle image uploads
+                  const uploadURL = 'Service/%y/%m/%d/'; // Replace with your upload endpoint URL
+  
+                  const formData = new FormData();
+                  formData.append('profile_image', file); // Use the appropriate field name for the image
+  
+                  // Send the image to the server
+                  fetch(uploadURL, {
+                      method: 'POST',
+                      body: formData,
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                      // Assuming the server responds with the URL of the uploaded image
+                      const imageUrl = data.imageUrl; // Replace with the actual response key
+  
+                      // Update the user's profile with the imageUrl
+                      // You can use an AJAX request or any method suitable for your backend
+                      updateUserProfile(imageUrl); // Replace with your function to update the profile
+                  })
+                  .catch(error => {
+                      console.error('Error uploading image:', error);
+                  });
+              };
+              reader.readAsDataURL(file);
+          }
+      });
+  
+      function updateUserProfile(imageUrl) {
+          // Here, you should implement the logic to update the user's profile
+          // You would typically send a request to your backend to update the profile with the new image URL
+          // This depends on your backend technology (e.g., Node.js, Python, PHP, etc.)
+          // Example AJAX request:
+          /*
+          $.ajax({
+              url: '/update-profile',
+              type: 'POST',
+              data: { profileImageUrl: imageUrl },
+              success: function (response) {
+                  // Handle success
+                  console.log('Profile image updated successfully');
+              },
+              error: function (error) {
+                  // Handle error
+                  console.error('Error updating profile image:', error);
+              }
+          });
+          */
+      }
+  </script>
+  
+{% endblock %}

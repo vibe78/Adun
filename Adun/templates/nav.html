@@ -1,0 +1,52 @@
+{% load static %}
+
+ <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
+        <a href=" {% url 'index'%}" class="navbar-brand p-0">
+            <h1 class="m-0 text-primary" style="font-size: 24px;">
+                <img class="nav-image" src="{% static 'img/IMG-20230620-WA0013.png' %}" alt="Adun Health Care Logo">
+                ADUN Health Care
+            </h1>
+            
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="{% url 'index' %}" class="nav-item nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
+                <a href="{% url 'about' %}" class="nav-item nav-link {% if request.path == '/about/' %}active{% endif %}">About</a>
+                <a href="{% url 'service' %}" class="nav-item nav-link {% if request.path == '/service/' %}active{% endif %}">Service</a>
+                <a href="{% url 'contact' %}" class="nav-item nav-link {% if request.path == '/contact/' %}active{% endif %}">Contact</a>
+                
+                
+            </div>
+            
+            {% if ussas %}
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{%static 'img/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg'%}" width="30">
+                     Welcome {{ussas}}
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                    {% if ussas  %}
+                        <!-- If the user is staff, link to staff profile -->
+                        <li><a class="dropdown-item" href="{% url 'staff' %}">My Profile (Staff)</a></li>
+                        <a href="{% url 'videocall' %}" class="nav-item nav-link {% if request.path == '/videocall/' %}active{% endif %}">Appointment</a>
+                    {% else %}
+                        <!-- If the user is not staff, link to patient profile -->
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile (Patient)</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item" href="{% url 'staff_logout' %}">Logout</a></li>
+                </ul>
+            {% else %}
+                <!-- Show register and login links if the user is not authenticated -->
+            <!--<button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>-->
+                <a href="{% url 'register' %}" class="btn btn-primary py-2 px-4 ms-3">Register</a>
+                <a href="{% url 'loginpage' %}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
+            {% endif %}
+            </div>
+            
+        </div>
+    </nav>
+    <!-- Navbar End -->

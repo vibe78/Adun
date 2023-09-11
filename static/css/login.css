@@ -1,0 +1,157 @@
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body{
+    background-color: #4cb2e9;
+  }
+
+   .form{
+    display: grid;
+    grid-template-columns: repeat(1,100%);
+    margin-left: 480px;
+    width: 400px;
+    height: 400px;
+    background-color: #22222253;
+    margin-top: 180px;
+    border-radius: 10px;
+    position: fixed;
+   }
+   .pass{
+    position: relative;
+    top: -130px;
+   }
+   .btn{
+    width: 20rem;
+    height: 2rem;
+    padding: 3px ;
+    position: absolute;
+    top: 500px;
+    left: 530px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    transition: 0.5s ease-in-out;
+    position: fixed;
+
+   }
+   .btn:hover{
+    background-color: #222;
+   }
+  
+  
+  .custom-field {
+    display: grid;
+    grid-template-columns: repeat(1,100%);
+    position: relative;
+    font-size: 14px;
+    border-top: 20px solid transparent;
+    margin-bottom: 5px;
+    display: block;
+    --field-padding: 12px;
+    margin-top: 80px;
+    margin-left: 70px;
+    border: none;
+    background: transparent;
+   
+  }
+  
+  .custom-field input {
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #f2f2f2;
+    padding: var(--field-padding);
+    border-radius: 3px;
+    width: 250px;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  .custom-field .placeholder {
+    position: absolute;
+    left: var(--field-padding);
+    width: calc(100% - (var(--field-padding) * 2));
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    top: 22px;
+    line-height: 100%;
+    transform: translateY(-50%);
+    color: #aaa;
+    transition: 
+      top 0.3s ease,
+      color 0.3s ease,
+      font-size 0.3s ease;
+  }
+  
+  .custom-field input.dirty + .placeholder,
+  .custom-field input:focus + .placeholder,
+  .custom-field input:not(:placeholder-shown) + .placeholder {
+    top: -10px;
+    font-size: 10px;
+    color: #222;
+  }
+  
+  .custom-field .error-message {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    font-size: 12px;
+    background: #d30909;
+    color: #fff;
+    height: 24px;
+  }
+  
+  .custom-field .error-message:empty {
+    opacity: 0;
+  }
+  /* TWO */
+  .custom-field.two input {
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background:
+      linear-gradient(90deg, #222, #222) center bottom/0 0.15em no-repeat,
+      linear-gradient(90deg, #ccc, #ccc) left bottom/100% 0.15em no-repeat,
+      linear-gradient(90deg, #fafafa, #fafafa) left bottom/100% no-repeat;
+    transition: background-size 0.3s ease;
+  }
+  
+  .custom-field.two input.dirty,
+  .custom-field.two input:not(:placeholder-shown),
+  .custom-field.two input:focus {
+    background-size: 100% 0.15em, 100% 0.1em, 100%;
+  }
+  
+  
+/* Style for the messages list */
+.messages {
+  /* z-index: -1; */
+  position: absolute;
+  left: 35em;
+  top: 33em;
+  list-style: none;
+  color: red;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style for each message item */
+.messages li {
+  margin: 5px 0;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+/* Style for different message tags */
+.messages li.error {
+  background-color: #ffdddd;
+  border: 1px solid #ff9999;
+  color: #d9534f;
+}
+
+/* ... Other message tag styles ... */

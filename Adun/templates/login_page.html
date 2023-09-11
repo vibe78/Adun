@@ -1,0 +1,64 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Registration - Adun</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/blogin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    <style>
+      /* Custom styles */
+      body {
+        background-color: lightblue; /* Set the light blue background color */
+      }
+      .card {
+        background-color: rgba(0, 255, 255, 0.1); /* Set the card background to transparent white */
+        border: none; /* Remove card border */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+      }
+    </style>
+  </head>
+
+  <body class="text-center">
+
+   
+      <div class="flex flex-wrap">
+        <div data-aos="fade-up-sm" data-aos-delay="50" class="md:w-1/2 lg:w-1/2 xl:w-1/2 p-4"> <!-- Use 1/2 to make them equal size -->
+          <div class="shadow-default overflow-hidden rounded-xl bg-white p-3 pb-0 transition-all duration-300 hover:-translate-y-1">
+            <div class="h-full w-full max-h-[900px]"> <!-- Set both height and width to 100% -->
+              <img class="mb-4" src="{% static '/img/IMG-20230620-WA0013.png' %}" class="h-full w-full rounded-xl rounded-b-none object-cover">
+            </div>
+            <div class="px-5 py-8">
+              <h3 class="mb-4 text-xl font-semibold text-dark sm:text-2xl">
+                <a href="{% url 'loginpage' %}" class="btn btn-primary py-2 px-4 ms-3">Patient</a>
+              </h3>
+            </div>
+          </div>
+        </div>
+      
+        <div data-aos="fade-up-sm" data-aos-delay="50" class="md:w-1/2 lg:w-1/2 xl:w-1/2 p-4"> <!-- Use 1/2 to make them equal size -->
+          <div class="shadow-default overflow-hidden rounded-xl bg-white p-3 pb-0 transition-all duration-300 hover:-translate-y-1">
+            <div class="h-full w-full max-h-[900px]"> <!-- Set both height and width to 100% -->
+              <img class="mb-4" src="{% static '/img/IMG-20230620-WA0013.png' %}" class="h-full w-full rounded-xl rounded-b-none object-cover">
+            </div>
+            <div class="px-5 py-8">
+              <h3 class="mb-4 text-xl font-semibold text-dark sm:text-2xl">
+                <a href="{% url 'staff_login' %}" class="btn btn-primary py-2 px-4 ms-3">Medical Staff</a>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+  </body>
+</html>
